@@ -7,7 +7,7 @@ const SpotifyPlayer = {
   },
   config: {
     player_name: "Dude, what's my song",
-    client_id: process.env.REACT_APP_CLIENT_ID,
+    client_id: process.env.CLIENT_ID,
     redirect_uri: window.location.origin,
     scopes: ['streaming', 'user-read-email', 'user-read-private', 'user-read-playback-state', 'user-modify-playback-state'],
   },
@@ -21,7 +21,7 @@ const SpotifyPlayer = {
       `&redirect_uri=${this.config.redirect_uri}`,
       `&scope=${this.config.scopes.join('%20')}`,
       '&response_type=token',
-      '&show_dialog=true',
+      '&show_dialog=false',
     ].join('');
   },
 };
