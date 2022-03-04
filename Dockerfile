@@ -1,12 +1,12 @@
-# Stage 1 - build
 FROM node:16
 
-WORKDIR /usr/src/app/frontend
+WORKDIR /app/frontend
 COPY frontend/package*.json .
+ENV NODE_ENV=production
 RUN npm install
 COPY frontend/ .
 RUN npm run build
-WORKDIR /usr/src/app/
+WORKDIR /app
 COPY package*.json .
 RUN npm install
 COPY . .
