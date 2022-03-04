@@ -21,7 +21,7 @@ const HostStarted = () => {
   return (
     <HostScreenStyles>
       <div className="qr">
-        <QR name={name} className="qr" size={256} value={`${window.location.href.replace('#', '')}${state.name}`} />
+        <QR name={name} className="qr" size={256} value={`${window.location.href.replace('#', '')}?id=${state.name}`} />
         {players && (
           <QueueStyles>
             {leader && (

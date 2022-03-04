@@ -26,7 +26,7 @@ const JoinOrCreateRoom = () => {
   const { state } = context;
   const { nickname: contextNickname } = state;
   useEffect(() => {
-    const roomName = parseInt(window.location.pathname.replace('/', ''), 10);
+    const roomName = parseInt(window.location.search.replace('?id=', ''), 10);
     if (roomName) {
       setName(roomName);
     }
@@ -50,6 +50,7 @@ const JoinOrCreateRoom = () => {
         }}
       >
         <label htmlFor="name">
+
           Room code
           <input
             id="name"
@@ -63,6 +64,7 @@ const JoinOrCreateRoom = () => {
           />
         </label>
         <label htmlFor="nickname">
+
           Nickname
           <NicknameContainer>
             <input id="nickname" value={nickname} onChange={event => setNickname(event.target.value)} type="text" name="nickname" />

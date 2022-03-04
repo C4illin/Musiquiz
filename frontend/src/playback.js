@@ -9,7 +9,7 @@ const SpotifyPlayer = {
     player_name: "Dude, what's my song",
     client_id: process.env.REACT_APP_CLIENT_ID,
     redirect_uri: window.location.origin,
-    scopes: ['streaming', 'user-read-birthdate', 'user-read-email', 'user-read-private', 'user-read-playback-state', 'user-modify-playback-state'],
+    scopes: ['streaming', 'user-read-email', 'user-read-private', 'user-read-playback-state', 'user-modify-playback-state'],
   },
   access_token: null,
   player: null,

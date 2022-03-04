@@ -6,7 +6,7 @@ import HostScreenStyles from '../../components/styles/HostScreenStyles';
 
 const HostWaiting = ({ name }) => (
   <HostScreenStyles>
-    <QR name={name} className="qr" size={256} value={`${window.location.href.replace('#', '')}${name}`} />
+    <QR name={name} className="qr" size={256} value={`${window.location.href.replace('#', '')}?id=${name}`} />
     <div className="game">
       <h1>Waiting for players</h1>
     </div>
