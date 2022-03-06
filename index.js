@@ -1,20 +1,18 @@
+const express = require('express');
 const SpotifyWebApi = require('spotify-web-api-node');
-const luckyNames = require('./names');
 
+const app = express();
+const http = require('http').Server(app);
+const io = require('socket.io')(http);
 require('dotenv').load();
+
+const luckyNames = require('./names');
 // credentials are optional
 const spotifyApi = new SpotifyWebApi({
   clientId: process.env.CLIENT_ID,
   clientSecret: process.env.CLIENT_SECRET,
   redirectUri: '',
 });
-
-const express = require('express');
-
-const app = express();
-const http = require('http').Server(app);
-const io = require('socket.io')(http);
-
 let rooms = [];
 const timeouts = {};
 
@@ -23,7 +21,6 @@ function getToken() {
     data => {
       console.log(`The access token expires in ${data.body.expires_in}`);
       console.log(`The access token is ${data.body.access_token}`);
-
       // Save the access token so that it's used in future calls
       spotifyApi.setAccessToken(data.body.access_token);
     },
@@ -34,25 +31,32 @@ function getToken() {
 }
 
 getToken();
+app.get('/callback', (req, res) => {
+  console.log(req);
+});
 
 // Refresh token before 1h.
 setInterval(getToken, 3598000);
 
-app.use((req, res, next) => {
+app.use((_req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   next();
 });
 
 app.get('/search/:name', (req, res) => {
-  spotifyApi.searchTracks(req.params.name, { market: 'SE' }).then(
-    data => {
-      res.send(data);
-    },
-    err => {
-      console.error(err);
-    },
-  );
+  spotifyApi
+    .searchTracks(req.params.name, {
+      market: 'SE',
+    })
+    .then(
+      data => {
+        res.send(data);
+      },
+      err => {
+        console.error(err);
+      },
+    );
 });
 let averageDanceability = 0.5;
 let averageEnergy = 0.5;
@@ -94,7 +98,7 @@ app.get('/recommendations/:name', (req, res) => {
         res.send(rec);
       })
       .catch(e => {
-        console.log(e);
+        console.log('77: ', e);
       });
   }
 });
@@ -102,7 +106,7 @@ app.get('/recommendations/:name', (req, res) => {
 app.use('/', express.static('frontend/build'));
 
 http.listen(process.env.PORT, () => {
-  console.log('Example app listening on port ' + process.env.PORT  + '!');
+  console.log(`Example app listening on port ${process.env.PORT}!`);
 });
 
 // --------------------------- Functions ---------------------------------
@@ -111,6 +115,7 @@ function resetRoom(room) {
   rooms = rooms.filter(r => r.name !== room.name);
   io.to(room.name).emit('reset');
 }
+
 function applyUpdates(room) {
   room.players.forEach(player => {
     player.score += player.scoreUpdate;
@@ -170,7 +175,6 @@ function startChoose(room) {
 }
 
 function stopRound(room) {
-  console.log('stopRound', room.name);
   const { leader, players, displayCorrectTime, selectedSong, totalPoints } = room;
   if (room.gamestate === 'midgame') {
     clearTimeout(timeouts[room.name].round);
@@ -280,7 +284,14 @@ io.on('connection', socket => {
     }
     if (!foundPlayer) {
       console.log('join new', nickname);
-      player = { nickname, active: true, connected: true, score: 0, scoreUpdate: 0, sessionId };
+      const player = {
+        nickname,
+        active: true,
+        connected: true,
+        score: 0,
+        scoreUpdate: 0,
+        sessionId,
+      };
       foundRoom.players.push(player);
       io.to(foundRoom.name).emit('playerJoined', player);
     } else {
@@ -298,10 +309,14 @@ io.on('connection', socket => {
       foundRoom.guessTimer = calculateTime(foundRoom.roundStartTime, foundRoom.roundTime);
     }
     foundRoom.correctSong = foundRoom.selectedSong;
-    socket.emit('joinSuccess', { nickname, room: foundRoom });
+    socket.emit('joinSuccess', {
+      nickname,
+      room: foundRoom,
+    });
     if (foundRoom && foundRoom.gamestate === 'lobby') {
       startChoose(foundRoom);
     }
+    return true;
   });
 
   socket.on('hostJoin', () => {
@@ -311,20 +326,20 @@ io.on('connection', socket => {
     socket.host = true;
     let creatingName = true;
     let name;
+    const findRoom = () => rooms.find(r => r.name === name);
     while (creatingName) {
-      name = Math.floor(Math.random() * (9999 - 1000) + 1000);
-      creatingName = rooms.find(r => r.name === name);
+      name = Math.floor(Math.random() * (9999 - 1000) + 1000).toString();
+      creatingName = findRoom();
     }
-    timeouts[name] = { round: {}, players: {} };
+    timeouts[name] = {
+      round: {},
+      players: {},
+    };
     socket.name = name;
     const room = {
       name: socket.name,
-      roundTime,
-      leaderTime,
-      displayCorrectTime,
       players: [],
       guesses: 0,
-      penalty: 0,
       gamestate: 'lobby',
       totalPoints: 0,
       energyArray: [],
@@ -388,7 +403,7 @@ io.on('connection', socket => {
       foundRoom.leaderTime = settings.leaderTime * 1000;
       foundRoom.maxPoints = settings.maxPoints;
       foundRoom.minPoints = settings.minPoints;
-      //TODO send settings
+      // TODO send settings
     }
   });
 
@@ -398,7 +413,7 @@ io.on('connection', socket => {
     if (foundRoom.leader.nickname === nickname) {
       pickLeader(foundRoom);
     }
-    io.to(name).emit('kick', nickname);
+    io.to(name).emit('kick', { nickname });
   });
 
   socket.on('disconnect', () => {
