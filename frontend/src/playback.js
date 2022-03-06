@@ -7,7 +7,7 @@ const SpotifyPlayer = {
   },
   config: {
     player_name: "Dude, what's my song",
-    client_id: process.env.CLIENT_ID,
+    client_id: "648d904fb6eb4d34b8ab948c36a73b67",
     redirect_uri: window.location.origin,
     scopes: ['streaming', 'user-read-email', 'user-read-private', 'user-read-playback-state', 'user-modify-playback-state'],
   },
