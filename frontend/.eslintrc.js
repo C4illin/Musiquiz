@@ -1,6 +1,6 @@
 module.exports = {
   extends: ['airbnb', 'prettier'],
-  plugins: ['prettier'],
+  plugins: ['emotion', 'prettier'],
   rules: {
     'no-underscore-dangle': 'off',
     'comma-dangle': ['error', 'always-multiline'],

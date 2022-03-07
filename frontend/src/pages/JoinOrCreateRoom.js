@@ -49,7 +49,7 @@ const JoinOrCreateRoom = () => {
           return false;
         }}
       >
-        <h1 style={{marginBottom: "0.5em"}}>Musikwissenschaft</h1>
+        <h1 style={{marginBottom: "0.5em", maxWidth: "100", wordBreak: "break-all"}}>Musikwissenschaft</h1>
         {/* eslint-disable-next-line react/jsx-one-expression-per-line */}
         <label htmlFor="name">
           Room code

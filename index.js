@@ -31,10 +31,6 @@ function getToken() {
 }
 
 getToken();
-app.get('/callback', (req, res) => {
-  console.log(req);
-});
-
 // Refresh token before 1h.
 setInterval(getToken, 3598000);
 
@@ -305,7 +301,6 @@ io.on('connection', socket => {
     if (foundRoom && foundRoom.gamestate === 'lobby') {
       startChoose(foundRoom);
     }
-    return true;
   });
 
   socket.on('hostJoin', () => {
@@ -315,20 +310,20 @@ io.on('connection', socket => {
     socket.host = true;
     let creatingName = true;
     let name;
-    const findRoom = () => rooms.find(r => r.name === name);
     while (creatingName) {
-      name = Math.floor(Math.random() * (9999 - 1000) + 1000).toString();
-      creatingName = findRoom();
+      name = Math.floor(Math.random() * (9999 - 1000) + 1000);
+      creatingName = rooms.find(r => r.name === name);
     }
-    timeouts[name] = {
-      round: {},
-      players: {},
-    };
+    timeouts[name] = { round: {}, players: {} };
     socket.name = name;
     const room = {
       name: socket.name,
+      roundTime,
+      leaderTime,
+      displayCorrectTime,
       players: [],
       guesses: 0,
+      penalty: 0,
       gamestate: 'lobby',
       totalPoints: 0,
       energyArray: [],
