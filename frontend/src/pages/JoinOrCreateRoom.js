@@ -49,8 +49,9 @@ const JoinOrCreateRoom = () => {
           return false;
         }}
       >
+        <h1 style={{marginBottom: "0.5em"}}>Musikwissenschaft</h1>
+        {/* eslint-disable-next-line react/jsx-one-expression-per-line */}
         <label htmlFor="name">
-
           Room code
           <input
             id="name"
@@ -63,8 +64,8 @@ const JoinOrCreateRoom = () => {
             name="name"
           />
         </label>
+        {/* eslint-disable-next-line react/jsx-one-expression-per-line */}
         <label htmlFor="nickname">
-
           Nickname
           <NicknameContainer>
             <input id="nickname" value={nickname} onChange={event => setNickname(event.target.value)} type="text" name="nickname" />

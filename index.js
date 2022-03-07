@@ -258,10 +258,9 @@ io.on('connection', socket => {
     const names = luckyNames;
     const index = Math.floor(Math.random() * (names.length - 1));
     const nickname = names[index];
-    console.log("Lucky name: ", nickname);
     socket.emit('lucky', nickname);
   });
-  
+
   socket.on('join', data => {
     const { nickname, name, sessionId } = data;
     const foundRoom = rooms.find(r => r.name === name);
