@@ -255,23 +255,13 @@ function calculatePoints(roundStartTime, roundTime, minPoints, maxPoints) {
 
 io.on('connection', socket => {
   socket.on('lucky', name => {
-    const foundRoom = rooms.find(r => r.name === name);
-    if (foundRoom) {
-      let foundName = false;
-      const names = luckyNames;
-      while (!foundName && names.length > 0) {
-        const index = Math.floor(Math.random() * (names.length - 1));
-        const nickname = names[index];
-        const existingPlayer = foundRoom.players.find(player => player.nickname === nickname);
-        if (existingPlayer) {
-          names.splice(index, index);
-        } else {
-          foundName = true;
-          socket.emit('lucky', nickname);
-        }
-      }
-    }
+    const names = luckyNames;
+    const index = Math.floor(Math.random() * (names.length - 1));
+    const nickname = names[index];
+    console.log("Lucky name: ", nickname);
+    socket.emit('lucky', nickname);
   });
+  
   socket.on('join', data => {
     const { nickname, name, sessionId } = data;
     const foundRoom = rooms.find(r => r.name === name);
