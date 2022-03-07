@@ -17,7 +17,7 @@ window.disconnect = disconnect;
 window.reconnect = reconnect;
 
 function on(event, callback) {
-  socket.on(event, data => {
+  socket.on(event, (data) => {
     console.log('receiving', event, data);
     callback(data);
   });

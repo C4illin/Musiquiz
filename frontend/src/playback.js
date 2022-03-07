@@ -71,7 +71,7 @@ SpotifyPlayer.controls = {
     this._request('POST', '/v1/me/player/next');
   },
   searchAndPlay(query) {
-    this._request('GET', `/v1/search?type=track&q=${query}*&market=from_token`, {}).then(results => {
+    this._request('GET', `/v1/search?type=track&q=${query}*&market=from_token`, {}).then((results) => {
       SpotifyPlayer.controls.play([results.tracks.items[0].uri]);
     });
   },
@@ -115,28 +115,28 @@ window.onSpotifyPlayerAPIReady = () => {
   });
 
   // Player is ready and can be issued commands
-  SpotifyPlayer.player.on('ready', e => {
+  SpotifyPlayer.player.on('ready', (e) => {
     console.log('Ready to rock!', e);
     SpotifyPlayer.device_id = e.device_id;
   });
 
   // Player state changed
   // The event contains information about the current player state
-  SpotifyPlayer.player.on('player_state_changed', e => {
+  SpotifyPlayer.player.on('player_state_changed', (e) => {
     console.log('Player state changed', (window.e = e));
   });
 
   // Handle errors
-  SpotifyPlayer.player.on('initialization_failed', e => {
+  SpotifyPlayer.player.on('initialization_failed', (e) => {
     console.log('Initialization Failed', e);
   });
-  SpotifyPlayer.player.on('authentication_error', e => {
+  SpotifyPlayer.player.on('authentication_error', (e) => {
     console.log('Authentication Error', e);
   });
-  SpotifyPlayer.player.on('account_error', e => {
+  SpotifyPlayer.player.on('account_error', (e) => {
     console.log('Account Error', e);
   });
-  SpotifyPlayer.player.on('playback_error', e => {
+  SpotifyPlayer.player.on('playback_error', (e) => {
     console.log('Playback Error', e);
   });
 
