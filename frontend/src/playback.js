@@ -6,7 +6,7 @@ const SpotifyPlayer = {
     auth_endpoint: 'https://accounts.spotify.com/authorize',
   },
   config: {
-    player_name: "Dude, what's my song",
+    player_name: "Musikwiss",
     client_id: "648d904fb6eb4d34b8ab948c36a73b67",
     redirect_uri: window.location.origin,
     scopes: ['streaming', 'user-read-email', 'user-read-private', 'user-read-playback-state', 'user-modify-playback-state'],
@@ -21,7 +21,7 @@ const SpotifyPlayer = {
       `&redirect_uri=${this.config.redirect_uri}`,
       `&scope=${this.config.scopes.join('%20')}`,
       '&response_type=token',
-      '&show_dialog=false',
+      '&show_dialog=true',
     ].join('');
   },
 };
@@ -111,7 +111,7 @@ window.onSpotifyPlayerAPIReady = () => {
     getOauthToken(cb) {
       cb(SpotifyPlayer.access_token);
     },
-    volume: 0.8,
+    volume: 1,
   });
 
   // Player is ready and can be issued commands
