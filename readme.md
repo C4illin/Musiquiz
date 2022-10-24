@@ -6,6 +6,8 @@ https://musikwiss.emrik.org/
 
 ## Installation
 ```yml
+# docker-compose.yml
+
 services:
   musikwiss:
     image: ghcr.io/c4illin/musiquiz:main
