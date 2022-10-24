@@ -13,7 +13,7 @@ class Settings extends Component {
     super(props);
     this.state = {
       devices: [],
-      time: 30,
+      time: 40,
       leaderTime: 10,
       penalty: 0,
       maxPoints: 50,
