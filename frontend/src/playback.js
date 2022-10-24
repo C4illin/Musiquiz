@@ -9,7 +9,7 @@ const SpotifyPlayer = {
     player_name: "Musikwiss",
     client_id: "648d904fb6eb4d34b8ab948c36a73b67",
     redirect_uri: window.location.origin,
-    scopes: ['streaming', 'user-read-email', 'user-read-private', 'user-read-playback-state', 'user-modify-playback-state'],
+    scopes: ['streaming', 'user-read-playback-state', 'user-modify-playback-state'],
   },
   access_token: null,
   player: null,
@@ -21,7 +21,7 @@ const SpotifyPlayer = {
       `&redirect_uri=${this.config.redirect_uri}`,
       `&scope=${this.config.scopes.join('%20')}`,
       '&response_type=token',
-      '&show_dialog=true',
+      '&show_dialog=false',
     ].join('');
   },
 };
