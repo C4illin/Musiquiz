@@ -6,8 +6,8 @@ const SpotifyPlayer = {
     auth_endpoint: 'https://accounts.spotify.com/authorize',
   },
   config: {
-    player_name: "Musikwiss",
-    client_id: "648d904fb6eb4d34b8ab948c36a73b67",
+    player_name: "musikwiss",
+    client_id: process.env.REACT_APP_CLIENT_ID,
     redirect_uri: window.location.origin,
     scopes: ['streaming', 'user-read-email', 'user-read-private', 'user-read-playback-state', 'user-modify-playback-state'],
   },
@@ -71,7 +71,7 @@ SpotifyPlayer.controls = {
     this._request('POST', '/v1/me/player/next');
   },
   searchAndPlay(query) {
-    this._request('GET', `/v1/search?type=track&q=${query}*&market=from_token`, {}).then((results) => {
+    this._request('GET', `/v1/search?type=track&q=${query}*&market=from_token`, {}).then(results => {
       SpotifyPlayer.controls.play([results.tracks.items[0].uri]);
     });
   },
@@ -111,36 +111,67 @@ window.onSpotifyPlayerAPIReady = () => {
     getOauthToken(cb) {
       cb(SpotifyPlayer.access_token);
     },
-    volume: 1,
+    volume: 1.0,
   });
 
-  // Player is ready and can be issued commands
-  SpotifyPlayer.player.on('ready', (e) => {
-    console.log('Ready to rock!', e);
-    SpotifyPlayer.device_id = e.device_id;
+   // Handle errors
+  /*
+  SpotifyPlayer.player.on('initialization_failed', e => {
+    console.log('Initialization Failed', e);
+  });
+  SpotifyPlayer.player.on('authentication_error', e => {
+    console.log('Authentication Error', e);
+  });
+  SpotifyPlayer.player.on('account_error', e => {
+    console.log('Account Error', e);
+  });
+  SpotifyPlayer.player.on('playback_error', e => {
+    console.log('Playback Error', e);
+  }); 
+  */
+
+  SpotifyPlayer.player.addListener('initialization_error', ({ message }) => { 
+    console.error(message);
+    console.log("errors lol");
+    console.log(SpotifyPlayer.access_token);
+    console.log(SpotifyPlayer.device_id);
+    console.log(SpotifyPlayer.player);
+  });
+  SpotifyPlayer.player.addListener('authentication_error', ({ message }) => { console.error(message); });
+  SpotifyPlayer.player.addListener('account_error', ({ message }) => { console.error(message); });
+  SpotifyPlayer.player.addListener('playback_error', ({ message }) => { console.error(message); });
+
+
+  // Playback status updates
+  SpotifyPlayer.player.addListener('player_state_changed', state => { console.log(state); });
+
+  // Ready
+  SpotifyPlayer.player.addListener('ready', ({ device_id }) => {
+    console.log('Ready with Device ID', device_id);
+    SpotifyPlayer.device_id = device_id;
   });
 
+  // Not Ready
+  SpotifyPlayer.player.addListener('not_ready', ({ device_id }) => {
+    console.log('Device ID has gone offline', device_id);
+  });
+
+  /*
   // Player state changed
   // The event contains information about the current player state
-  SpotifyPlayer.player.on('player_state_changed', (e) => {
+  SpotifyPlayer.player.on('player_state_changed', e => {
     console.log('Player state changed', (window.e = e));
   });
 
-  // Handle errors
-  SpotifyPlayer.player.on('initialization_failed', (e) => {
-    console.log('Initialization Failed', e);
+  // Player is ready and can be issued commands
+  SpotifyPlayer.player.on('ready', e => {
+    console.log('Ready to rock!', e);
+    SpotifyPlayer.device_id = e.device_id;
   });
-  SpotifyPlayer.player.on('authentication_error', (e) => {
-    console.log('Authentication Error', e);
-  });
-  SpotifyPlayer.player.on('account_error', (e) => {
-    console.log('Account Error', e);
-  });
-  SpotifyPlayer.player.on('playback_error', (e) => {
-    console.log('Playback Error', e);
-  });
-
+  */
+  
   // Connect to the Player
+  console.log("Connecting player");
   SpotifyPlayer.player.connect();
 };
 
