@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import QR from '../../components/QR';
 import HostScreenStyles from '../../components/styles/HostScreenStyles';
-import SpotifyPlayer from '../playback';
+import SpotifyPlayer from '../../playback';
 
 const HostWaiting = ({ name }) => (
   <HostScreenStyles>
