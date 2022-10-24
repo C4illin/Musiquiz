@@ -306,7 +306,7 @@ io.on('connection', socket => {
   });
 
   socket.on('hostJoin', () => {
-    const roundTime = 30000;
+    const roundTime = 40000;
     const leaderTime = 10000;
     const displayCorrectTime = 10000;
     socket.host = true;
