@@ -6,8 +6,8 @@ const SpotifyPlayer = {
     auth_endpoint: 'https://accounts.spotify.com/authorize',
   },
   config: {
-    player_name: "musikwiss",
-    client_id: process.env.REACT_APP_CLIENT_ID,
+    player_name: "Musikwiss",
+    client_id: "648d904fb6eb4d34b8ab948c36a73b67",
     redirect_uri: window.location.origin,
     scopes: ['streaming', 'user-read-email', 'user-read-private', 'user-read-playback-state', 'user-modify-playback-state'],
   },
