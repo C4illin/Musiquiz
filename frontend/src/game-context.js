@@ -3,7 +3,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Cookies, withCookies } from 'react-cookie';
-import uuidv4 from 'uuid';
+import { v4 as uuidv4 } from 'uuid';
 import { on, emit } from './api';
 
 export const GameContext = React.createContext();

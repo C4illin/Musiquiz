@@ -1,10 +1,8 @@
 {
-  "name": "dwims",
+  "name": "musikviss",
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
-    "eslint": "^8.26.0",
-    "eslint-plugin-import": "^2.26.0",
     "react-scripts": "^5.0.1"
   },
   "dependencies": {
@@ -15,15 +13,14 @@
     "@fortawesome/react-fontawesome": "^0.1.4",
     "emotion-theming": "^10.0.7",
     "prop-types": "^15.7.2",
-    "qrcode.react": "^0.9.3",
+    "qrcode.react": "^3.1.0",
     "react": "^16.14.0",
-    "react-animated-number": "^0.4.3",
+    "react-animated-number": "^0.4.4",
     "react-cookie": "^3.0.8",
     "react-countup": "^2.3.0",
     "react-dom": "^16.14.0",
-    "react-router-dom": "^4.3.1",
     "socket.io-client": "^2.2.0",
-    "uuid": "^3.3.2"
+    "uuid": "^9.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
