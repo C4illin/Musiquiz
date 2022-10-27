@@ -1,7 +1,6 @@
 /* global window */
 
 import React, { useContext } from 'react';
-import LogRocket from 'logrocket';
 import Scores from '../../components/Scores';
 import Track from '../../components/Track';
 import { GameContext } from '../../game-context';
@@ -14,7 +13,6 @@ const HostStarted = () => {
   const context = useContext(GameContext);
   const { state } = context;
   const { correctSong, players, name, gamestate, leader, guessTimer, leaderTimer, songToPlay } = state;
-  LogRocket.identify('Host', { room: name });
   const nonLeaders = players.filter(p => p.active && p.nickname !== leader.nickname);
 
   const { onKickPlayer } = context;

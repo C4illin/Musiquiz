@@ -21,7 +21,7 @@ const SpotifyPlayer = {
       `&redirect_uri=${this.config.redirect_uri}`,
       `&scope=${this.config.scopes.join('%20')}`,
       '&response_type=token',
-      '&show_dialog=false',
+      '&show_dialog=true',
     ].join('');
   },
 };
