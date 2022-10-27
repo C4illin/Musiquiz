@@ -39,7 +39,7 @@ class Settings extends Component {
     this.playSong('spotify:track:1DCNcPA0Y9ukY5AlXAZKUm');
   }
 
-  componentWillReceiveProps(newProps) {
+  UNSAFE_componentWillReceiveProps(newProps) {
     const { songToPlay } = this.props;
     if (songToPlay !== newProps.songToPlay) {
       console.log(`Playing ${newProps.songToPlay}`);
