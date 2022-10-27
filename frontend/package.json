@@ -3,15 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
-    "babel-plugin-emotion": "^10.0.7",
-    "eslint-config-airbnb": "^17.1.0",
-    "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-config-prettier": "^4.1.0",
-    "eslint-plugin-emotion": "^10.0.7",
-    "eslint-plugin-import": "^2.16.0",
-    "eslint-plugin-jsx-a11y": "^6.2.1",
-    "eslint-plugin-react": "^7.12.4",
-    "lint-staged": "^13.0.3",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsx-a11y": "^6.6.1",
     "react-scripts": "^2.1.8"
   },
   "dependencies": {
@@ -29,7 +22,6 @@
     "react-countup": "^2.3.0",
     "react-dom": "^16.14.0",
     "react-router-dom": "^4.3.1",
-    "screenfull": "^4.0.1",
     "socket.io-client": "^2.2.0",
     "uuid": "^3.3.2"
   },
@@ -39,21 +31,6 @@
     "newbuild": "react-scripts --openssl-legacy-provider build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
-  },
-  "lint-staged": {
-    "*.js": [
-      "eslint --fix",
-      "git add"
-    ],
-    "*.{css,json}": [
-      "prettier --write",
-      "git add"
-    ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
   },
   "browserslist": [
     ">0.2%",
