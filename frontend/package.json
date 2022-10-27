@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
+    "eslint": "^8.26.0",
     "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-jsx-a11y": "^6.6.1",
-    "react-scripts": "^2.1.8"
+    "react-scripts": "^5.0.1"
   },
   "dependencies": {
     "@emotion/core": "^10.0.7",
