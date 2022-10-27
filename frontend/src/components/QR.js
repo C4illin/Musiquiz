@@ -1,5 +1,5 @@
 import React from 'react';
-import QRCode from 'qrcode.react';
+import QRCodeCanvas from 'qrcode.react';
 import PropTypes from 'prop-types';
 import QRStyles from './styles/QRStyles';
 
@@ -7,7 +7,7 @@ const QR = props => {
   const { name, className, size, value } = props;
   return (
     <QRStyles className={className}>
-      <QRCode size={size} value={value} />
+      <QRCodeCanvas size={size} value={value} />
       <h1>{`#${name}`}</h1>
     </QRStyles>
   );

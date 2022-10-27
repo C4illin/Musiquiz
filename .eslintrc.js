@@ -15,7 +15,7 @@ module.exports = {
     "browser": true,
     "node": true
   },
-  rules: {
+  "rules": {
     'no-console': 'off',
     'object-curly-newline': 'off',
     'no-unused-vars': 'off',
