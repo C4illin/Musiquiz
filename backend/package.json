@@ -8,28 +8,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/SSundstrom/DWIMS.git"
+    "url": "git+https://github.com/C4illin/Musiquiz.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/SSundstrom/DWIMS/issues"
+    "url": "https://github.com/C4illin/Musiquiz/issues"
   },
-  "homepage": "https://github.com/SSundstrom/DWIMS#readme",
+  "homepage": "https://github.com/C4illin/Musiquiz#readme",
   "dependencies": {
-    "datastructures-js": "^3.0.7",
     "dotenv": "^6.2.0",
-    "express": "^4.16.2",
-    "socket.io": "^2.2.0",
+    "express": "^4.18.2",
+    "socket.io": "^2.5.0",
     "spotify-web-api-node": "^4.0.0"
-  },
-  "devDependencies": {
-    "eslint-config-airbnb": "^19.0.4",
-    "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-plugin-import": "^2.16.0",
-    "eslint-plugin-jsx-a11y": "^6.2.1",
-    "eslint-plugin-prettier": "^3.0.1",
-    "eslint-plugin-react": "^7.12.4",
-    "prettier-eslint": "^8.2.2"
   }
 }
