@@ -46,7 +46,7 @@ class Search extends Component {
           <input id="song-title" type="text" onChange={e => this.onChange(e.currentTarget.value)} value={value} />
         </label>
         {results.map(track => (
-          <Track track={track} onClick={() => onSelectSong(track)} />
+          <Track key={track.name} track={track} onClick={() => onSelectSong(track)} />
         ))}
         {recommendations && value.length === 0 && <RecommendedSongs name={name} onSelectSong={onSelectSong} />}
       </div>

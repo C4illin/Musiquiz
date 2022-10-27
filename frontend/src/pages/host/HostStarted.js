@@ -41,7 +41,7 @@ const HostStarted = () => {
                 {nonLeaders
                   .filter((p, index) => index > 0)
                   .map(player => (
-                    <div className="queue-label">{player.nickname}</div>
+                    <div className="queue-label" key={player.nickname}>{player.nickname}</div>
                   ))}
               </React.Fragment>
             )}
@@ -53,7 +53,7 @@ const HostStarted = () => {
                   .filter(p => !p.active)
                   .sort()
                   .map(player => (
-                    <div className="queue-label">{player.nickname}</div>
+                    <div className="queue-label" key={player.nickname}>{player.nickname}</div>
                   ))}
               </React.Fragment>
             )}
