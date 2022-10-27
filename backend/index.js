@@ -101,7 +101,7 @@ app.get('/recommendations/:name', (req, res) => {
   }
 });
 
-app.use('/', express.static('frontend/build'));
+app.use('/', express.static('../frontend/build'));
 
 http.listen(process.env.PORT, () => {
   console.log(`Example app listening on port ${process.env.PORT}!`);

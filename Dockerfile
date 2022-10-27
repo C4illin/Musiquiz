@@ -5,11 +5,11 @@ COPY frontend/package*.json ./
 RUN npm install --legacy-peer-deps
 COPY frontend/ ./
 RUN npm run build
-WORKDIR /usr/src/app
+WORKDIR /usr/src/app/backend
 ENV NODE_ENV=production
-COPY package*.json ./
+COPY backend/package*.json ./
 RUN npm install
-COPY ./ ./
+COPY backend/ ./
 
 EXPOSE 8080
 CMD [ "node", "index.js" ]
