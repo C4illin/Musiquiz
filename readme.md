@@ -4,6 +4,8 @@ Fixed QR and hosting, all credit to original authors.
 
 https://musikwiss.emrik.org/
 
+DM me your email if you want it to work for your spotify account or host it yourself
+
 ## Installation
 ```yml
 # docker-compose.yml
