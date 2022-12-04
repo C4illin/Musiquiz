@@ -15,7 +15,8 @@ const names = [
   'Quiz Pratt',
   'Quizten Stewart',
   'Aspa MK',
-  'Det svider när jag Quizar'
+  'Det svider när jag Quizar',
+  'Jag har redan lyssnat på musik, QUIZAT!'
 ];
 
 module.exports = names;
