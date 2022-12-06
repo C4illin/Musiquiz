@@ -254,7 +254,7 @@ function calculatePoints(roundStartTime, roundTime, minPoints, maxPoints) {
 io.on('connection', socket => {
   socket.on('lucky', name => {
     const names = luckyNames;
-    const index = Math.floor(Math.random() * (names.length - 1));
+    const index = Math.floor(Math.random() * names.length);
     const nickname = names[index];
     socket.emit('lucky', nickname);
   });
