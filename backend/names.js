@@ -9,7 +9,7 @@ const names = [
   'Quiztoffer Robinson',
   'Quiztarina den Store',
   'Quiztiano Ronaldo',
-  'Quizling',
+  'Vidkun Quizling',
   'Carola HäggQuizt',
   'Jesus Quiztus',
   'Quiz Pratt',
