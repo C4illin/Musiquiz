@@ -15,6 +15,7 @@ const names = [
   'Quiz Pratt',
   'Quizten Stewart',
   'Quizimodo',
+  'Quirinus',
   'Det svider när jag Quizar',
 ];
 
