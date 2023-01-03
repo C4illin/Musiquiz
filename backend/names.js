@@ -17,6 +17,7 @@ const names = [
   'Quizimodo',
   'Quizinus',
   'Quiztian den andre',
+  'Quiztian tyrann',
   'Quiztianstad',
   'Det svider när jag Quizar',
 ];
