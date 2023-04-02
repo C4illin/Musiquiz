@@ -20,6 +20,10 @@ const names = [
   'Quiztian tyrann',
   'Quiztianstad',
   'Det svider när jag Quizar',
+  'Karlssons quizter',
+  'Mama didn\'t raise no quizzer',
+  'The Quizard of Oz',
+  'Quizzly bear'
 ];
 
 module.exports = names;
