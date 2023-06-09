@@ -15,7 +15,7 @@ class Settings extends Component {
       devices: [],
       time: 40,
       leaderTime: 10,
-      penalty: 5,
+      penalty: 1,
       maxPoints: 50,
       minPoints: 10,
       selectedDevice: SpotifyPlayer.device_id,

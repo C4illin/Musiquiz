@@ -1,5 +1,5 @@
 import React from 'react';
-import { Global, css } from '@emotion/core';
+import { Global, css } from '@emotion/react';
 
 export const theme = {
   blue: '#45a3e5',

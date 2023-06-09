@@ -1,7 +1,7 @@
 import React from 'react';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faCog, faSignOutAlt, faTimes } from '@fortawesome/free-solid-svg-icons';
-import { ThemeProvider } from 'emotion-theming';
+import { ThemeProvider } from '@emotion/react';
 import { theme, GlobalSyles } from './constants/styling';
 import Game from './Game';
 import GameProvider from './game-context';

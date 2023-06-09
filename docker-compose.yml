@@ -1,0 +1,10 @@
+version: "3"
+services:
+  musikwiss:
+    build: .
+    ports:
+      - 8081:8081
+    environment:
+      - PORT=8081
+      - CLIENT_ID=648d904fb6eb4d34b8ab948c36a73b67
+      - CLIENT_SECRET=3b243c2c82c3435b9fa29700e3145d8f

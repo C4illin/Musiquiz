@@ -1,5 +1,5 @@
 import * as React from 'react';
-import AnimatedNumber from 'react-animated-number';
+import AnimatedNumber from '@plot-and-scatter/react-animated-number';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import ScoreStyles from './styles/ScoreStyles';
 import IconButton from './styles/IconButton';
