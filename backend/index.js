@@ -1,5 +1,5 @@
 const express = require('express');
-const SpotifyWebApi = require('spotify-web-api-node');
+const SpotifyWebApi = require("spotify-web-api-node-plus");
 
 const app = express();
 const http = require('http').Server(app);
@@ -61,7 +61,7 @@ let averageEnergy = 0.5;
 // let deleteTemp = true;
 
 app.get('/recommendations/:name', (req, res) => {
-  const name = parseInt(req.params.name, 10);
+  const name = Number.parseInt(req.params.name, 10);
   const foundRoom = rooms.find(r => r.name === name);
   if (foundRoom) {
     const { songArray, energyArray, danceabilityArray } = foundRoom;
