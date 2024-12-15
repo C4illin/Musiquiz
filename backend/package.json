@@ -18,7 +18,7 @@
   "homepage": "https://github.com/C4illin/Musiquiz#readme",
   "dependencies": {
     "dotenv": "^6.2.0",
-    "express": "^4.18.2",
+    "express": "^4.21.2",
     "socket.io": "^2.5.0",
     "spotify-web-api-node-plus": "^7.0.0"
   }
